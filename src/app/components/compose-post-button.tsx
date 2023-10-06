@@ -2,14 +2,14 @@
 
 import { experimental_useFormStatus as useFormStatus } from 'react-dom'
 
-export function ComposePostButton() {
-    const formStatus = useFormStatus()
-    console.log(formStatus);
-    
-    const { pending } = formStatus;
-    console.log(pending);
+export function ComposePostButton () {
+  const formStatus = useFormStatus()
+  console.log(formStatus)
 
-    return (
+  const { pending } = formStatus
+  console.log(pending)
+
+  return (
         <button
             disabled={pending}
             type='submit'
@@ -17,5 +17,5 @@ export function ComposePostButton() {
         >
             {pending ? 'Posteando...' : 'Posteare'}
         </button>
-    )
+  )
 }
