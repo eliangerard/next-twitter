@@ -15,14 +15,14 @@ export function ComposePost ({
         <form ref={formRef} action={async (formData) => {
           await addPost(formData)
           formRef.current?.reset()
-        }} className='flex flex-row p-3 border-b border-white/20'>
+        }} className='flex flex-row p-3'>
             <img className='rounded-full w-10 h-10 object-contain mr-4' src={userAvatarUrl} />
             <div className='flex flex-1 flex-col gap-y-4'>
                 <textarea
                     name='content'
                     rows={4}
-                    className='w-full text-xl bg-black placeholder-gray-500 p-2'
-                    placeholder='¡¿Qué está pasando!?'
+                    className='w-full bg-stone-800 placeholder-zinc-400 p-2 rounded-xl resize-none focus:outline-none focus:ring-[1px] focus:ring-white/30 transition'
+                    placeholder='Post something!'
                 ></textarea>
                 <ComposePostButton />
             </div>
