@@ -13,9 +13,9 @@ export function ComposePostButton () {
         <button
             disabled={pending}
             type='submit'
-            className='bg-sky-500 text-sm disabled:opacity-40 disabled:pointer-events-none font-bold rounded-full px-5 py-2 self-end'
+            className='bg-teal-500 text-sm disabled:opacity-40 disabled:pointer-events-none font-bold rounded-full px-4 py-1 self-end'
         >
-            {pending ? 'Posteando...' : 'Posteare'}
+            {pending ? 'Posting...' : 'Post'}
         </button>
   )
 }
