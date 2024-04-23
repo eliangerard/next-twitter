@@ -6,7 +6,7 @@ import { PostLists } from './components/posts-list'
 import { type Database } from './types/database'
 import { ComposePost } from './components/compose-post'
 
-export default async function Home () {
+export default async function Home() {
   const supabase = createServerComponentClient<Database>({ cookies })
   const { data: { session } } = await supabase.auth.getSession()
 
@@ -19,6 +19,7 @@ export default async function Home () {
     .select('*, user:users(name, avatar_url, username)')
     .order('created_at', { ascending: false })
 
+  const { data: { user } } = await supabase.auth.getUser()
   const posts =
     data?.map(post => ({
       ...post,
@@ -26,13 +27,26 @@ export default async function Home () {
     })) ?? []
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <>
+      <main className="flex min-h-screen items-center justify-center bg-stone-900">
 
-      <section className="max-w-[600px] w-full mx-auto border-l border-r border-white/20 min-h-screen">
-        <ComposePost userAvatarUrl={session.user?.user_metadata?.avatar_url} />
-        <PostLists posts={posts} />
-      </section>
-      <AuthButtonServer />
-    </main>
+        <header className='w-full fixed top-0 left-0 h-12 flex items-center justify-center border-b-[1px] border-white/20 bg-stone-800 z-50'>
+          <div className='w-full max-w-[600px] flex items-center justify-between px-3'>
+            <div className='w-6 h-10'></div>
+            <h1 className='font-black'>Not X</h1>
+            <AuthButtonServer />
+          </div>
+        </header>
+        <section className="max-w-[600px] w-full min-h-screen pt-16">
+          <ComposePost userAvatarUrl={session.user?.user_metadata?.avatar_url} />
+          <PostLists posts={posts} />
+        </section>
+        <section className='max-w-[200px]'>
+          {/* <div>
+            {JSON.stringify(user)}
+          </div> */}
+        </section>
+      </main>
+    </>
   )
 }
