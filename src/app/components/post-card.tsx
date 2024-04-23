@@ -1,6 +1,5 @@
 'use client'
-import { Card, CardHeader, CardBody, CardFooter, Avatar } from '@nextui-org/react'
-import { IconMessageCircle, IconHeartCode, IconRepeat } from '@tabler/icons-react'
+import { Card, CardHeader, CardBody, Avatar } from '@nextui-org/react'
 export default function PostCard ({
   userFullName,
   userName,
